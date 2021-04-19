@@ -2,7 +2,7 @@
     <string name="app_name">Calc</string>
     <string name="strBt1">1</string>
     <string name="strBt7">7</string>
-    <string name="str_disp">00000000000</string>
+    <string name="str_disp">0</string>
     <string name="strBt8">8</string>
     <string name="strBt9">9</string>
     <string name="strDiv">/</string>
@@ -17,4 +17,9 @@
     <string name="strPoint">.</string>
     <string name="strAdd">+</string>
     <string name="strEq">=</string>
+    <string name="str_aux">M</string>
+    <string name="strMemMinus">M-</string>
+    <string name="strMemAdd">M+</string>
+    <string name="strRemember">RM</string>
+    <string name="strBtClear">C</string>
 </resources>
