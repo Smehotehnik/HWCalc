@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Calc</string>
+    <string name="strBt1">1</string>
+    <string name="strBt7">7</string>
+    <string name="str_disp">00000000000</string>
+    <string name="strBt8">8</string>
+    <string name="strBt9">9</string>
+    <string name="strDiv">/</string>
+    <string name="strBt4">4</string>
+    <string name="strBt5">5</string>
+    <string name="strBt6">6</string>
+    <string name="strPow">*</string>
+    <string name="strBt2">2</string>
+    <string name="strBt3">3</string>
+    <string name="strMinus">-</string>
+    <string name="strBt0">0</string>
+    <string name="strPoint">.</string>
+    <string name="strAdd">+</string>
+    <string name="strEq">=</string>
+</resources>
