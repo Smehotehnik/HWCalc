@@ -9,11 +9,13 @@ import android.widget.TextView;
 
 import com.r_21.calc.R;
 
-public class Calculator extends AppCompatActivity {
-    private static double value;
+public class Calc extends AppCompatActivity {
+    private static double value1, value2, answer;
+    private static int action = 10;
     private static String strValue;
     private TextView screenStr;
-    private final Button [] numButtons = new Button[10];
+    private final Button[] numButtons = new Button[10];
+    private Button btPoint;
     private final int NUMBER_LENGTH = 8;
 
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -22,7 +24,6 @@ public class Calculator extends AppCompatActivity {
 
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class Calculator extends AppCompatActivity {
         numButtons[7] = findViewById(R.id.bt7);
         numButtons[8] = findViewById(R.id.bt8);
         numButtons[9] = findViewById(R.id.bt9);
+        btPoint = findViewById(R.id.btPoint);
 
         if (savedInstanceState == null) {
             //First launch
@@ -47,50 +49,39 @@ public class Calculator extends AppCompatActivity {
             //strValue = "0";
         } else {
             //TODO check
-
         }
         strValue = (String) screenStr.getText();
 
-        findViewById(R.id.bt0).setOnClickListener(v -> {
-            String st = (String) getText(R.string.strBt0);
-            btnPressed(st);
-        });
-
-        findViewById(R.id.bt1).setOnClickListener(v -> {
-            String st = (String) getText(R.string.strBt1);
-            btnPressed(st);
-        });
-        findViewById(R.id.bt2).setOnClickListener(v -> {
-            String st = (String) getText(R.string.strBt2);
-            btnPressed(st);
-        });
-        findViewById(R.id.bt3).setOnClickListener(v -> {
-            String st = (String) getText(R.string.strBt3);
-            btnPressed(st);
-        });
-/*        numButtons[4].setOnClickListener(v -> {
-            String st = (String) numButtons[4].getText();
-            btnPressed(st);
-        });*/
-       for (int i = 4; i < 7; i++) {
-            //int finalI = i;
-           int finalI = i;
-           numButtons[i].setOnClickListener(v -> {
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            numButtons[i].setOnClickListener(v -> {
                 String st = (String) numButtons[finalI].getText();
                 btnPressed(st);
             });
         }
 
+        btPoint.setOnClickListener(v -> {
+            String st = (String) btPoint.getText();
+            btnPressed(st);
+        });
 
-
+        findViewById(R.id.btClear).setOnClickListener(v -> {
+            strValue = "0";
+            screenStr.setText(strValue);
+        });
     }
 
     private void btnPressed(String figure) {
         if (strValue.equals("0")) {
-            if (!figure.equals("0")) {
-                strValue = figure;
+            if (figure.equals(".")) strValue += figure;
+            else                    strValue = figure;
+        } else if (figure.equals(".")) {
+            if (!strValue.contains(".")) {
+                strValue += figure;
             }
         } else if (strValue.length() < NUMBER_LENGTH) {
+            strValue += figure;
+        } else if (strValue.contains(".") && strValue.length() == NUMBER_LENGTH) {
             strValue += figure;
         }
         screenStr.setText(strValue);
