@@ -9,14 +9,12 @@ import android.widget.TextView;
 
 import com.r_21.calc.R;
 import com.r_21.calc.logic.Calculator;
-import com.r_21.calc.logic.OperationFlag;
 import com.r_21.calc.logic.Operations;
 
 import java.util.Locale;
 
 public class Calc extends AppCompatActivity implements Calculator {
     private static Double value1, value2, answer;
-    OperationFlag flag;
     Operations operation;
     private static String strValue;
     private TextView screenStr, auxScreen;
@@ -52,7 +50,6 @@ public class Calc extends AppCompatActivity implements Calculator {
 
         if (savedInstanceState == null) {
             //First launch
-            flag = OperationFlag.calcFinished;
             screenStr.setText("0");
             auxScreen.setText("");
             value1 = value2 = answer = 0d;
@@ -75,14 +72,8 @@ public class Calc extends AppCompatActivity implements Calculator {
         });
 //--------------------Operations---------------------------------
         findViewById(R.id.btAdd).setOnClickListener(v -> {
-            if (flag == OperationFlag.calcStated) {
-                getAnswer();
-                flag = OperationFlag.interimResult;
-            } else if (flag == OperationFlag.calcFinished) {
-                strValue = (String) screenStr.getText();
-                value1 = Double.parseDouble(strValue);
-                flag = OperationFlag.calcStated;
-            }
+            strValue = (String) screenStr.getText();
+            value1 = Double.parseDouble(strValue);
             operation = Operations.ADD;
             strValue = "0";
         });
@@ -95,14 +86,8 @@ public class Calc extends AppCompatActivity implements Calculator {
         });
 
         findViewById(R.id.btMinus).setOnClickListener(v -> {
-            if (flag == OperationFlag.calcStated) {
-                getAnswer();
-                flag = OperationFlag.interimResult;
-            } else if (flag == OperationFlag.calcFinished) {
-                strValue = (String) screenStr.getText();
-                value1 = Double.parseDouble(strValue);
-                flag = OperationFlag.calcStated;
-            }
+            strValue = (String) screenStr.getText();
+            value1 = Double.parseDouble(strValue);
             operation = Operations.SUB;
             strValue = "0";
         });
@@ -123,20 +108,22 @@ public class Calc extends AppCompatActivity implements Calculator {
             auxScreen.setText("");
             screenStr.setText(strValue);
             value1 = value2 = answer = 0d;
-            flag = OperationFlag.calcFinished;
         });
     }
 
     private void getAnswer() {
-        if (flag == OperationFlag.calcStated) value2 = Double.parseDouble(strValue);
-        //if (flag == OperationFlag.interimResult)
+        value2 = Double.parseDouble(strValue);
         answer = binaryOperation(value1, value2, operation);
         value1 = answer;
-        if (answer != 0) strValue = String.format(Locale.US, "%1.8g", answer);
-        else strValue = "0";
+        strValue = String.format(Locale.US, "%1.8g", answer);
+        if (strValue.contains(".") && (!strValue.contains("e"))) ;
+        {
+            while (strValue.endsWith("0")) {
+                strValue = strValue.substring(0, strValue.length() - 1);
+            }
+        }
         screenStr.setText(strValue);
         strValue = "0";
-        flag = OperationFlag.calcFinished;
     }
 
     private void btnPressed(String figure) {
