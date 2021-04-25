@@ -2,7 +2,7 @@ package com.r_21.calc.logic;
 
 public class CalculatorImplement implements Calculator{
     @Override
-    public double binaryOperation(double val_1, double val_2, Operatios operation) {
+    public double binaryOperation(double val_1, double val_2, Operations operation) {
         switch (operation){
             case ADD:
                 return val_1 + val_2;

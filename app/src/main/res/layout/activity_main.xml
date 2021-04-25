@@ -29,11 +29,11 @@
     <TextView
         android:id="@+id/display"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:fontFamily="sans-serif-black"
         android:gravity="right"
         android:text="@string/str_disp"
-        android:textSize="70sp"
+        android:textSize="50sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/aux_display" />
