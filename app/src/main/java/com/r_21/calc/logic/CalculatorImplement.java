@@ -12,9 +12,10 @@ public class CalculatorImplement implements Calculator{
                 return val_1 * val_2;
             case DIV:
                 return val_1 / val_2;
+            case NO:
+                return val_1;
             default:
                 return 0;
         }
-        //return 0;
     }
 }
