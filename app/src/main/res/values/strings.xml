@@ -9,7 +9,7 @@
     <string name="strBt4">4</string>
     <string name="strBt5">5</string>
     <string name="strBt6">6</string>
-    <string name="strPow">*</string>
+    <string name="strMul">*</string>
     <string name="strBt2">2</string>
     <string name="strBt3">3</string>
     <string name="strMinus">-</string>
@@ -22,4 +22,6 @@
     <string name="strMemAdd">M+</string>
     <string name="strRemember">RM</string>
     <string name="strBtClear">C</string>
+    <string name="day">day</string>
+    <string name="night">night</string>
 </resources>
