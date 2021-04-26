@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_screen_text_size">50sp</dimen>
+    <dimen name="bt_text_size">20sp</dimen>
+    <dimen name="toggle_bt_text_size">9sp</dimen>
+    <dimen name="aux_screen_text_size">25sp</dimen>
+    <dimen name="aux_screen_height">30dp</dimen>
+    <dimen name="main_screen_height">70dp</dimen>
+    <dimen name="horizontal_margin">3dp</dimen>
+</resources>

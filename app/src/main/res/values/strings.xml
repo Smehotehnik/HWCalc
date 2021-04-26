@@ -22,4 +22,6 @@
     <string name="strMemAdd">M+</string>
     <string name="strRemember">RM</string>
     <string name="strBtClear">C</string>
+    <string name="day">day</string>
+    <string name="night">night</string>
 </resources>
