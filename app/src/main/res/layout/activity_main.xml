@@ -142,17 +142,16 @@
         android:id="@+id/linear1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toTopOf="@id/linear2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear0"
-        android:theme="@style/main_bt_style">
+        app:layout_constraintTop_toBottomOf="@id/linear0">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt4" />
 
@@ -160,7 +159,6 @@
             android:id="@+id/bt5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt5" />
 
@@ -168,7 +166,6 @@
             android:id="@+id/bt6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt6" />
 
@@ -176,7 +173,6 @@
             android:id="@+id/btMul"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
             android:text="@string/strMul" />
@@ -186,17 +182,16 @@
         android:id="@+id/linear2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toTopOf="@id/linear3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear1"
-        android:theme="@style/main_bt_style">
+        app:layout_constraintTop_toBottomOf="@id/linear1">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt1" />
 
@@ -204,7 +199,6 @@
             android:id="@+id/bt2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt2" />
 
@@ -212,7 +206,6 @@
             android:id="@+id/bt3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strBt3" />
 
@@ -220,7 +213,6 @@
             android:id="@+id/btMinus"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
             android:text="@string/strMinus" />
@@ -230,26 +222,23 @@
         android:id="@+id/linear3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear2"
-        android:theme="@style/main_bt_style">
+        app:layout_constraintTop_toBottomOf="@id/linear2">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
-
             android:text="@string/strBt0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btPoint"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:text="@string/strPoint" />
 
@@ -257,7 +246,6 @@
             android:id="@+id/btEq"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:backgroundTint="@color/orange"
             android:text="@string/strEq" />
@@ -266,7 +254,6 @@
             android:id="@+id/btAdd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
             android:text="@string/strAdd" />
