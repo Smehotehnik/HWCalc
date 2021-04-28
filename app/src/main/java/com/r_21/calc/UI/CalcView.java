@@ -17,4 +17,5 @@ public interface CalcView {
     void btMemAddClicked();
     void btMemMinusClicked();
     void btRMClicked();
+    void dayNightToggled();
 }

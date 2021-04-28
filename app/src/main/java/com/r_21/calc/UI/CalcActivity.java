@@ -3,6 +3,7 @@ package com.r_21.calc.UI;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
@@ -27,6 +28,9 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(R.style.Theme_CalcDark);
+
         setContentView(R.layout.activity_main);
         screenStr = findViewById(R.id.display);
         auxScreen = findViewById(R.id.aux_display);
@@ -96,6 +100,9 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
                         break;
                     case R.id.btRM:
                         presenter.btRMClicked();
+                        break;
+                    case R.id.day_night_toggle:
+                        presenter.dayNightToggled();
                         break;
                     default:
                         break;
@@ -223,6 +230,11 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
 
     @Override
     public void btRMClicked() {
+
+    }
+
+    @Override
+    public void dayNightToggled() {
 
     }
 }

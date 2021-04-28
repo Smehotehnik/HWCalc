@@ -24,4 +24,5 @@
     <string name="strBtClear">C</string>
     <string name="day">day</string>
     <string name="night">night</string>
+    <string name="theme">тема</string>
 </resources>

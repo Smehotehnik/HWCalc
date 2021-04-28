@@ -70,6 +70,11 @@ public class CalcPresenter implements CalcView, Serializable {
 
     }
 
+    @Override
+    public void dayNightToggled() {
+
+    }
+
     private void btnPressed(String figure) {
         if (strValue.equals("0")) {
             if (figure.equals(".")) strValue += figure;

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <ImageView
         android:layout_width="0dp"
@@ -24,6 +25,18 @@
         android:text="@string/str_aux"
         android:textSize="@dimen/aux_screen_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_theme"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        style="@style/bt_theme_style"
+        android:text="@string/theme"
+        android:textSize="@dimen/theme_text_size"
+        app:layout_constraintBottom_toTopOf="@id/display"
+        app:layout_constraintLeft_toRightOf="@+id/aux_display"
         app:layout_constraintRight_toLeftOf="@id/day_night_toggle"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,9 +49,10 @@
         android:textOn="@string/day"
         android:textSize="@dimen/toggle_bt_text_size"
         app:layout_constraintBottom_toTopOf="@id/display"
-        app:layout_constraintLeft_toRightOf="@+id/aux_display"
+        app:layout_constraintLeft_toRightOf="@+id/bt_theme"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/display"
@@ -59,38 +73,32 @@
         app:layout_constraintBottom_toTopOf="@id/linear0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display">
+        app:layout_constraintTop_toBottomOf="@id/display"
+        android:theme="@style/bt_mem_style">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btMemAdd"
-            style="@style/bt_mem_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#45474A"
             android:text="@string/strMemAdd" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btMemMinus"
-            style="@style/bt_mem_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#45474A"
             android:text="@string/strMemMinus" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btRM"
-            style="@style/bt_mem_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#45474A"
             android:text="@string/strRemember" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btClear"
-            style="@style/bt_mem_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
