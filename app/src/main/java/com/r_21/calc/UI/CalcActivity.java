@@ -1,13 +1,17 @@
 package com.r_21.calc.UI;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.r_21.calc.R;
 import com.r_21.calc.logic.CalculatorImplement;
@@ -23,7 +27,9 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
     private final  static  String STVAL = "STVAL";
     private final  static  String SCR = "SCR";
     private final  static  String OP = "OP";
+    private static int themeId = 0;
 
+    private static final int REQUEST_CODE = 43;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +136,13 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
         findViewById(R.id.btMemMinus).setOnClickListener(onClickListener);
         findViewById(R.id.btRM).setOnClickListener(onClickListener);
 
+        findViewById(R.id.bt_theme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChoseActivity.show(CalcActivity.this, REQUEST_CODE);
+            }
+        });
+
         if (savedInstanceState == null) {
             //First launch
             screenStr.setText("0");
@@ -139,6 +152,19 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
             auxScreen.setText("");
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    Toast.makeText(CalcActivity.this, String.valueOf(data.getIntExtra(ChoseActivity.ARG_THEME_ID, -1)), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
 
     @Override

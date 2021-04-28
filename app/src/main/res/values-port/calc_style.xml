@@ -26,6 +26,14 @@
         <item name="android:layout_marginRight">@dimen/horizontal_margin</item>
         <item name="android:layout_marginLeft">@dimen/horizontal_margin</item>
         <item name="android:backgroundTint">@color/light_gray</item>
-        <item name="android:textSize">@dimen/theme_text_size</item>
+        <item name="android:textSize">@dimen/bt_text_size</item>
     </style>
+
+    <style name="bt_chose_theme_style" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_marginRight">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginLeft">@dimen/horizontal_margin</item>
+        <item name="android:backgroundTint">@color/light_gray</item>
+        <item name="android:textSize">@dimen/bt_text_size</item>
+    </style>
+
 </resources>
