@@ -5,13 +5,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
 
 import com.r_21.calc.R;
 import com.r_21.calc.logic.CalculatorImplement;
@@ -19,15 +25,19 @@ import com.r_21.calc.logic.Operations;
 
 import java.io.Serializable;
 
-public class CalcActivity extends AppCompatActivity implements CalcView, Serializable {
+public class CalcActivity extends AppCompatActivity implements CalcView, Serializable, RadioGroup.OnCheckedChangeListener {
     private CalcPresenter presenter;
     TextView screenStr, auxScreen;
-    private final  static  String VAL1 = "VAL1";
-    private final  static  String VAL2 = "VAL2";
-    private final  static  String STVAL = "STVAL";
-    private final  static  String SCR = "SCR";
-    private final  static  String OP = "OP";
-    private static int themeId = 0;
+    ToggleButton toggle;
+    private final static String VAL1 = "VAL1";
+    private final static String VAL2 = "VAL2";
+    private final static String STVAL = "STVAL";
+    private final static String SCR = "SCR";
+    private final static String OP = "OP";
+    private static int themeId = 1;
+    public static final String THEME_STORAGE = "THEME_STORAGE";
+    public static final String THEME = "THEME";
+    SharedPreferences themeSettings;
 
     private static final int REQUEST_CODE = 43;
 
@@ -35,14 +45,24 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTheme(R.style.Theme_CalcDark);
+        themeSettings = getSharedPreferences(THEME_STORAGE, Context.MODE_PRIVATE);
+        //SharedPreferences.Editor editor = themeSettings.edit();
+
+        if (themeSettings.contains(THEME)) {
+            themeId = themeSettings.getInt(THEME, 1);
+        }
+
+        if (themeId == 2)
+            setTheme(R.style.Theme_CalcDark);
+        else if (themeId == 1)
+            setTheme(R.style.Theme_Calc);
 
         setContentView(R.layout.activity_main);
         screenStr = findViewById(R.id.display);
         auxScreen = findViewById(R.id.aux_display);
+        toggle = findViewById(R.id.day_night_toggle);
+
         presenter = new CalcPresenter(this, new CalculatorImplement());
-
-
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +156,22 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
         findViewById(R.id.btMemMinus).setOnClickListener(onClickListener);
         findViewById(R.id.btRM).setOnClickListener(onClickListener);
 
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //Toast.makeText(CalcActivity.this, "toggle", Toast.LENGTH_SHORT).show();
+                if (isChecked) {
+                    if (themeId != 1) {
+                        saveAndRecreate(1);
+                    }
+                } else {
+                    if (themeId != 2) {
+                        saveAndRecreate(2);
+                    }
+                }
+            }
+        });
+
         findViewById(R.id.bt_theme).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,14 +193,23 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    Toast.makeText(CalcActivity.this, String.valueOf(data.getIntExtra(ChoseActivity.ARG_THEME_ID, -1)), Toast.LENGTH_SHORT).show();
+                    themeId = data.getIntExtra(ChoseActivity.ARG_THEME_ID, -1);
+                    //Toast.makeText(CalcActivity.this, String.valueOf(themeId), Toast.LENGTH_SHORT).show();
+                    saveAndRecreate(themeId);
                 }
             }
         }
+    }
+
+    private void saveAndRecreate(int themeNumber) {
+        themeSettings = getSharedPreferences(THEME_STORAGE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = themeSettings.edit();
+        editor.putInt(THEME, themeNumber);
+        editor.apply();
+        recreate();
     }
 
     @Override
@@ -188,6 +233,7 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
         presenter.strValue = savedInstanceState.getString(STVAL);
         presenter.nextOperation = (Operations) savedInstanceState.getSerializable(OP);
     }
+
 
     @Override
     public void showResult(String result) {
@@ -261,6 +307,11 @@ public class CalcActivity extends AppCompatActivity implements CalcView, Seriali
 
     @Override
     public void dayNightToggled() {
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
 
     }
 }
