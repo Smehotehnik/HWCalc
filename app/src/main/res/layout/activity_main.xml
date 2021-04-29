@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
 
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="background pic"
         android:alpha="0.4"
+        android:contentDescription="background pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/calc" />
+
     <TextView
         android:id="@+id/aux_display"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/aux_screen_height"
         android:fontFamily="sans-serif-black"
         android:gravity="center_vertical|left"
         android:text="@string/str_aux"
-        android:textSize="25sp"
+        android:textSize="@dimen/aux_screen_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_theme"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        style="@style/bt_theme_style"
+        android:text="@string/theme"
+        android:textSize="@dimen/theme_text_size"
+        app:layout_constraintBottom_toTopOf="@id/display"
+        app:layout_constraintLeft_toRightOf="@+id/aux_display"
+        app:layout_constraintRight_toLeftOf="@id/day_night_toggle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/day_night_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:checked="true"
+        android:textOff="@string/night"
+        android:textOn="@string/day"
+        android:textSize="@dimen/toggle_bt_text_size"
+        app:layout_constraintBottom_toTopOf="@id/display"
+        app:layout_constraintLeft_toRightOf="@+id/bt_theme"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/display"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/main_screen_height"
         android:fontFamily="sans-serif-black"
         android:gravity="right"
         android:text="@string/str_disp"
-        android:textSize="70sp"
+        android:textSize="@dimen/main_screen_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/aux_display" />
@@ -45,236 +74,199 @@
         app:layout_constraintBottom_toTopOf="@id/linear0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display">
+        app:layout_constraintTop_toBottomOf="@id/display"
+        android:theme="@style/bt_mem_style">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btMemAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strMemAdd"
-            android:backgroundTint="#45474A"
-            android:textSize="20sp" />
+            android:gravity="fill"
+            android:text="@string/strMemAdd" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btMemMinus"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strMemMinus"
-            android:backgroundTint="#45474A"
-            android:textSize="20sp" />
+            android:text="@string/strMemMinus" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btRM"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strRemember"
-            android:backgroundTint="#45474A"
-            android:textSize="20sp" />
+            android:text="@string/strRemember" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btClear"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="#E10707"
-            android:text="@string/strBtClear"
-            android:textSize="20sp" />
+            android:text="@string/strBtClear" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linear0"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toTopOf="@id/linear1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear_ce">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt7"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt7"
-            android:textSize="30sp" />
+            android:text="@string/strBt7" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt8"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt8"
-            android:textSize="30sp" />
+            android:text="@string/strBt8" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt9"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt9"
-            android:textSize="30sp" />
+            android:text="@string/strBt9" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btDiv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/strDiv"
-            android:textSize="30sp" />
+            android:text="@string/strDiv" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toTopOf="@id/linear2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear0">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt4"
-            android:textSize="30sp" />
+            android:text="@string/strBt4" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt5"
-            android:textSize="30sp" />
+            android:text="@string/strBt5" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt6"
-            android:textSize="30sp" />
+            android:text="@string/strBt6" />
 
-        <Button
-            android:id="@+id/btPow"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btMul"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/strPow"
-            android:textSize="30sp" />
+            android:text="@string/strMul" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toTopOf="@id/linear3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear1">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt1"
-            android:textSize="30sp" />
+            android:text="@string/strBt1" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt2"
-            android:textSize="30sp" />
+            android:text="@string/strBt2" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strBt3"
-            android:textSize="30sp" />
+            android:text="@string/strBt3" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btMinus"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/strMinus"
-            android:textSize="30sp" />
+            android:text="@string/strMinus" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:theme="@style/main_bt_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear2">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:text="@string/strBt0" />
 
-            android:text="@string/strBt0"
-            android:textSize="30sp" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btPoint"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:text="@string/strPoint"
-            android:textSize="30sp" />
+            android:text="@string/strPoint" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btEq"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="@color/orange"
-            android:text="@string/strEq"
-            android:textSize="30sp" />
+            android:text="@string/strEq" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btAdd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/strAdd"
-            android:textSize="30sp" />
+            android:text="@string/strAdd" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
